@@ -1,5 +1,5 @@
 from keras.models import Sequential
-from keras.layers import LSTM,Dense, GRU
+from keras.layers import LSTM,Dense, Dropout
 from keras.optimizers import SGD
 from keras.datasets import mnist
 from keras.utils import np_utils
@@ -31,6 +31,7 @@ model = Sequential()
 model.add(LSTM(
     nb_lstm_outputs,
     input_shape = input_shape))
+model.add(Dropout(0.2))
 model.add(Dense(nb_classes,activation = 'softmax',init = init_weights))
 model.summary()
 
