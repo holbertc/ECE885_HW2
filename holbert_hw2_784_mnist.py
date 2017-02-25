@@ -31,7 +31,7 @@ model = Sequential()
 model.add(LSTM(
     nb_lstm_outputs,
     input_shape = (784,1),
-    consume_less='gpu'))
+    consume_less='mem'))
 model.add(Dropout(0.2))
 model.add(Dense(nb_classes,activation = 'softmax',init = init_weights))
 model.summary()

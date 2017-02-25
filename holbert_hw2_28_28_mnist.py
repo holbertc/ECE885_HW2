@@ -4,8 +4,8 @@ from keras.optimizers import SGD
 from keras.datasets import mnist
 from keras.utils import np_utils
 from keras import initializations
-def init_weights(shape,name=None):
-    return initializations.normal(shape,scale=0.01,name = name)
+#def init_weights(shape,name=None):
+#    return initializations.normal(shape,scale=0.01,name = name)
 
 batch_size = 256
 nb_epoch = 20
@@ -30,9 +30,10 @@ Y_test = np_utils.to_categorical(y_test,nb_classes = nb_classes)
 model = Sequential()
 model.add(LSTM(
     nb_lstm_outputs,
-    input_shape = input_shape))
+    input_shape = input_shape,
+    consume_less='mem'))
 model.add(Dropout(0.2))
-model.add(Dense(nb_classes,activation = 'softmax',init = init_weights))
+model.add(Dense(nb_classes,activation = 'softmax'))#,init = init_weights))
 model.summary()
 
 #sgd = SGD(lr=0.1, momentum=0.9, decay=0.01)
