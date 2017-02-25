@@ -32,7 +32,7 @@ model.add(LSTM(
     input_shape = (784,1)))
 model.add(Dense(nb_classes,activation = 'softmax',init = init_weights))
 model.summary()
-model.compile(optimizer = 'rmsprop',loss = 'categorical_crossentropy',metrics = ['accuracy'])
+model.compile(optimizer = 'sgd',loss = 'categorical_crossentropy',metrics = ['accuracy'])
 history = model.fit(X_train,Y_train,nb_epoch = nb_epoch,batch_size=batch_size,shuffle = True,validation_split = 0.1)
 score = model.evaluate(X_test,Y_test)
 print 'test loss',score[0]
