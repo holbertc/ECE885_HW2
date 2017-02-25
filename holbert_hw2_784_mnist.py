@@ -1,5 +1,6 @@
 from keras.models import Sequential
 from keras.layers import LSTM,Dense
+from keras.optimizers import SGD
 from keras.datasets import mnist
 from keras.utils import np_utils
 from keras import initializations
@@ -32,6 +33,8 @@ model.add(LSTM(
     input_shape = (784,1)))
 model.add(Dense(nb_classes,activation = 'softmax',init = init_weights))
 model.summary()
+
+sgd = SGD(lr=0.1, momentum=0.9, decay=0.01)
 model.compile(optimizer = 'sgd',loss = 'categorical_crossentropy',metrics = ['accuracy'])
 history = model.fit(X_train,Y_train,nb_epoch = nb_epoch,batch_size=batch_size,shuffle = True,validation_split = 0.1)
 score = model.evaluate(X_test,Y_test)
