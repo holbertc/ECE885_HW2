@@ -1,11 +1,13 @@
+'''Trains a simple deep RNN on the MNIST dataset.
+Christopher Holbert
+'''
+import numpy as np
+np.random.seed(1337)  # for reproducibility
+
 from keras.models import Sequential
 from keras.layers import LSTM,Dense,Dropout
-from keras.optimizers import SGD
 from keras.datasets import mnist
 from keras.utils import np_utils
-from keras import initializations
-def init_weights(shape,name=None):
-    return initializations.normal(shape,scale=0.01,name = name)
 
 batch_size = 256
 nb_epoch = 10
@@ -33,10 +35,9 @@ model.add(LSTM(
     input_shape = (784,1),
     consume_less='mem'))
 model.add(Dropout(0.2))
-model.add(Dense(nb_classes,activation = 'softmax',init = init_weights))
+model.add(Dense(nb_classes,activation = 'softmax'))
 model.summary()
 
-#sgd = SGD(lr=0.1, momentum=0.9, decay=0.01)
 model.compile(optimizer = 'adam',loss = 'categorical_crossentropy',metrics = ['accuracy'])
 history = model.fit(X_train,Y_train,nb_epoch = nb_epoch,batch_size=batch_size,shuffle = True,validation_split = 0.1)
 score = model.evaluate(X_test,Y_test)
