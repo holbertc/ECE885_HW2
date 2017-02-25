@@ -1,5 +1,5 @@
 from keras.models import Sequential
-from keras.layers import LSTM,Dense
+from keras.layers import LSTM,Dense,GRU
 from keras.optimizers import SGD
 from keras.datasets import mnist
 from keras.utils import np_utils
@@ -28,7 +28,7 @@ Y_test = np_utils.to_categorical(y_test,nb_classes = nb_classes)
 
 #Build LSTM network
 model = Sequential()
-model.add(LSTM(
+model.add(GRU(
     nb_lstm_outputs,
     input_shape = (784,1)))
 model.add(Dense(nb_classes,activation = 'softmax',init = init_weights))
