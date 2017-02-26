@@ -14,7 +14,7 @@ nb_epoch = 10
 nb_classes = 10
 
 #parameters for LSTM network
-nb_lstm_outputs = 50
+nb_lstm_outputs = 100
 
 #load MNIST dataset
 (X_train,y_train),(X_test,y_test) = mnist.load_data()
