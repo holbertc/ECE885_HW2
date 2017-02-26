@@ -32,8 +32,10 @@ Y_test = np_utils.to_categorical(y_test,nb_classes = nb_classes)
 model = Sequential()
 model.add(LSTM(
     nb_lstm_outputs,
-    input_shape = (784,1),
-    consume_less='gpu'))
+    #input_shape = (784,1),
+    input_dim=1,
+    input_length=784,
+    consume_less='cpu'))
 model.add(Dropout(0.2))
 model.add(Dense(nb_classes,activation = 'softmax'))
 model.summary()
