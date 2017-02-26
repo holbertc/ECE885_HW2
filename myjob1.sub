@@ -17,4 +17,4 @@
 cd /mnt/home/holbertc/ECE885_HW2/ECE885_HW2
 
 ### another example
-THEANO_FLAGS=mode=FAST_RUN,device=cpu,floatX=flaot=32 ipython holbert_hw2_784.py
+THEANO_FLAGS=mode=FAST_RUN,device=cpu,floatX=flaot=32 ipython holbert_hw2_784_mnist.py
