@@ -14,7 +14,7 @@ nb_epoch = 10
 nb_classes = 10
 
 #parameters for LSTM network
-nb_lstm_outputs = 100
+nb_lstm_outputs = 10
 
 #load MNIST dataset
 (X_train,y_train),(X_test,y_test) = mnist.load_data()
@@ -35,7 +35,7 @@ model.add(LSTM(
     #input_shape = (784,1),
     input_dim=1,
     input_length=784,
-    consume_less='cpu'))
+    consume_less='mem'))
 model.add(Dropout(0.2))
 model.add(Dense(nb_classes,activation = 'softmax'))
 model.summary()
