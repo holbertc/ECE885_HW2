@@ -19,12 +19,16 @@ nb_lstm_outputs = 100
 #load MNIST dataset
 (X_train,y_train),(X_test,y_test) = mnist.load_data()
 
-X_train = X_train.reshape(X_train.shape[0], -1, 1)
-X_test = X_test.reshape(X_test.shape[0], -1, 1)
+#Reshape input data to 784 pointwise
+X_train = X_train.reshape(60000, 1, 784)
+X_test = X_test.reshape(10000, 1, 784)
+X_train = X_train.astype('float32')
+X_test = X_test.astype('float32')
+X_train /= 255
+X_test /= 255
+print(X_train.shape[0], 'train samples')
+print(X_test.shape[0], 'test samples')
 
-print X_train.shape
-X_train = X_train.astype('float32')/255
-X_test = X_test.astype('float32')/255
 Y_train = np_utils.to_categorical(y_train,nb_classes = nb_classes)
 Y_test = np_utils.to_categorical(y_test,nb_classes = nb_classes)
 
@@ -32,9 +36,9 @@ Y_test = np_utils.to_categorical(y_test,nb_classes = nb_classes)
 model = Sequential()
 model.add(LSTM(
     nb_lstm_outputs,
-    #input_shape = (784,1),
-    input_dim=1,
-    input_length=784,
+    input_shape = (1,784),
+    #input_dim=1,
+    #input_length=784,
     consume_less='mem'))
 model.add(Dropout(0.2))
 model.add(Dense(nb_classes,activation = 'softmax'))
