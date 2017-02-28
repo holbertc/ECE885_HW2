@@ -8,6 +8,7 @@ from keras.models import Sequential
 from keras.layers import LSTM,Dense,Dropout
 from keras.datasets import mnist
 from keras.utils import np_utils
+from keras.optimizers import SGD
 
 batch_size = 32
 nb_epoch = 20
@@ -44,7 +45,9 @@ model.add(Dropout(0.2))
 model.add(Dense(nb_classes,activation = 'softmax'))
 model.summary()
 
-model.compile(optimizer = 'adam',loss = 'categorical_crossentropy',metrics = ['accuracy'])
+sgd = SGD(lr=0.1)
+
+model.compile(optimizer = sgd,loss = 'categorical_crossentropy',metrics = ['accuracy'])
 history = model.fit(X_train,Y_train,nb_epoch = nb_epoch,batch_size=batch_size,shuffle = True,validation_split = 0.1)
 score = model.evaluate(X_test,Y_test)
 print 'test loss',score[0]
