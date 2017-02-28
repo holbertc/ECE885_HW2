@@ -1,4 +1,4 @@
-﻿#!/bin/bash -login
+#!/bin/bash -login
  
 ### define resources needed:
 ### walltime - how long you expect the job to run
