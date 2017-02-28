@@ -9,8 +9,8 @@ from keras.layers import LSTM,Dense,Dropout
 from keras.datasets import mnist
 from keras.utils import np_utils
 
-batch_size = 256
-nb_epoch = 30
+batch_size = 32
+nb_epoch = 20
 nb_classes = 10
 
 #parameters for LSTM network
@@ -20,8 +20,8 @@ nb_lstm_outputs = 100
 (X_train,y_train),(X_test,y_test) = mnist.load_data()
 
 #Reshape input data to 784 pointwise
-X_train = X_train.reshape(60000, 1, 784)
-X_test = X_test.reshape(10000, 1, 784)
+X_train = X_train.reshape(60000, 784, 1)
+X_test = X_test.reshape(10000, 784, 1)
 X_train = X_train.astype('float32')
 X_test = X_test.astype('float32')
 X_train /= 255
@@ -36,7 +36,7 @@ Y_test = np_utils.to_categorical(y_test,nb_classes = nb_classes)
 model = Sequential()
 model.add(LSTM(
     nb_lstm_outputs,
-    input_shape = (1,784),
+    input_shape = (784,1),
     #input_dim=1,
     #input_length=784,
     consume_less='mem'))
