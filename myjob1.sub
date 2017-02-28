@@ -5,7 +5,7 @@
 #PBS -l walltime=10:00:00
  
 ### nodes:ppn - how many nodes & cores per node (ppn) that you require
-#PBS -l nodes=5:ppn=1
+#PBS -l nodes=8:ppn=1
  
 ### mem: amount of memory that the job will need
 #PBS -l mem=2gb
@@ -17,4 +17,4 @@
 cd /mnt/home/holbertc/ECE885_HW2/ECE885_HW2
 
 ### another example
-THEANO_FLAGS=mode=FAST_RUN,device=cpu,floatX=flaot=32 ipython holbert_hw2_784_mnist.py
+ipython holbert_hw2_784_mnist.py
