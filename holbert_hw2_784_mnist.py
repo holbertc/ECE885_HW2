@@ -45,7 +45,7 @@ model.add(Dropout(0.2))
 model.add(Dense(nb_classes,activation = 'softmax'))
 model.summary()
 
-sgd = SGD(lr=0.3, momentum=0.9, nesterov=True)
+sgd = SGD(lr=0.01)
 model.compile(optimizer = sgd,loss = 'categorical_crossentropy',metrics = ['accuracy'])
 history = model.fit(X_train,Y_train,nb_epoch = nb_epoch,batch_size=batch_size,shuffle = True,validation_split = 0.1)
 score = model.evaluate(X_test,Y_test)

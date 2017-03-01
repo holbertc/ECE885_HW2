@@ -10,7 +10,7 @@ from keras.datasets import mnist
 from keras.utils import np_utils
 
 batch_size = 256
-nb_epoch = 30
+nb_epoch = 10
 img_rows,img_cols = 28,28
 nb_classes = 10
 
