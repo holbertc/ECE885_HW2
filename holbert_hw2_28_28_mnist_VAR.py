@@ -5,7 +5,8 @@ import numpy as np
 np.random.seed(1337)  # for reproducibility
 
 from keras.models import Sequential
-from keras.layers import LSTM,Dense, Dropout
+from keras.layers import Dense, Dropout
+from custom_recurrent import LSTMHolbert
 from keras.datasets import mnist
 from keras.utils import np_utils
 
@@ -30,7 +31,7 @@ Y_test = np_utils.to_categorical(y_test,nb_classes = nb_classes)
 
 #Build LSTM network
 model = Sequential()
-model.add(LSTM(
+model.add(LSTMHolbert(
     nb_lstm_outputs,
     input_shape = input_shape,
     consume_less='mem'))
