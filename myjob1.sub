@@ -8,13 +8,13 @@
 #PBS -l nodes=5:ppn=1
  
 ### mem: amount of memory that the job will need
-#PBS -l mem=4gb
+#PBS -l mem=5gb
  
 ### you can give your job a name for easier identification
-#PBS -N holbert_784
+#PBS -N holbert_784_VAR
  
 ### change to the working directory where your code is located
 cd /mnt/home/holbertc/ECE885_HW2/ECE885_HW2
 export PATH=/mnt/research/NN1/anaconda2/bin:$PATH
 ### another example
-ipython holbert_hw2_784_mnist.py
+ipython holbert_hw2_784_mnist_VAR.py
