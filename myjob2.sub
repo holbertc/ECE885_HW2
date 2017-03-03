@@ -2,19 +2,19 @@
  
 ### define resources needed:
 ### walltime - how long you expect the job to run
-#PBS -l walltime=00:05:00
+#PBS -l walltime=28:00:00
  
 ### nodes:ppn - how many nodes & cores per node (ppn) that you require
 #PBS -l nodes=5:ppn=1
  
 ### mem: amount of memory that the job will need
-#PBS -l mem=2gb
+#PBS -l mem=6gb
  
 ### you can give your job a name for easier identification
-#PBS -N holbert_2828_new
+#PBS -N holbert_784_40
  
 ### change to the working directory where your code is located
 cd /mnt/home/holbertc/ECE885_HW2/ECE885_HW2
 export PATH=/mnt/research/NN1/anaconda2/bin:$PATH
-### execute code
-ipython holbert_hw2_28_28_mnist.py
+### another example
+ipython holbert_hw2_784_mnist.py
