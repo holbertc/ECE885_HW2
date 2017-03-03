@@ -10,7 +10,7 @@ from keras.datasets import mnist
 from keras.utils import np_utils
 
 batch_size = 32
-nb_epoch = 20
+nb_epoch = 40
 nb_classes = 10
 
 #parameters for LSTM network
