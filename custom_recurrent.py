@@ -851,16 +851,16 @@ class LSTMHolbert(Recurrent):
                 x_c = x[:, 2 * self.output_dim: 3 * self.output_dim]
                 x_o = x[:, 3 * self.output_dim:]
             elif self.consume_less == 'mem':
-                x_i = K.dot(x * B_W[0], self.W_i) + self.b_i
-                x_f = K.dot(x * B_W[1], self.W_f) + self.b_f
+                x_i = 0*K.dot(x * B_W[0], self.W_i) + self.b_i
+                x_f = 0*K.dot(x * B_W[1], self.W_f) + self.b_f
                 x_c = K.dot(x * B_W[2], self.W_c) + self.b_c
-                x_o = K.dot(x * B_W[3], self.W_o) + self.b_o
+                x_o = 0*K.dot(x * B_W[3], self.W_o) + self.b_o
             else:
                 raise ValueError('Unknown `consume_less` mode.')
 
             i = self.inner_activation(x_i + 0*K.dot(h_tm1 * B_U[0], self.U_i))
             f = self.inner_activation(x_f + 0*K.dot(h_tm1 * B_U[1], self.U_f))
-            c = f * c_tm1 + i * self.activation(x_c + 0*K.dot(h_tm1 * B_U[2], self.U_c))
+            c = f * c_tm1 + i * self.activation(x_c + K.dot(h_tm1 * B_U[2], self.U_c))
             o = self.inner_activation(x_o + 0*K.dot(h_tm1 * B_U[3], self.U_o))
 
         h = o * self.activation(c)
